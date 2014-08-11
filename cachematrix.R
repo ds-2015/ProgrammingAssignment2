@@ -5,14 +5,23 @@
 
 makeCacheMatrix <- function(x = matrix()) {
         x_inv <- NULL
+        
+        # set matrix value (assign value to object in parent env. for cache)
         set <- function(y) {
-                x <<- y
+                
+                x <<- y 
                 x_inv <<-NULL
         }
+        
+        # get matrix 
         get <- function() x
         
+        # set matrix inverse (assign value to object in parent env. for cache)
         setinverse <- function (in_matrix_inv) x_inv <<- in_matrix_inv
+        
+        # get matrix inverse
         getinverse <- function () x_inv
+        
         list(set = set, get = get, 
              setinverse = setinverse, 
              getinverse = getinverse)
